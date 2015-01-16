@@ -13,6 +13,8 @@ var sima = Sima('myapp')
 sima.info('type %s', 'somethings');
 ```
 
+![Sima Guang](http://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Sima_Guang_of_Song.jpg/1280px-Sima_Guang_of_Song.jpg)
+
 ## Installation
 
 ```bash
