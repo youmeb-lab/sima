@@ -11,4 +11,5 @@
     -p, --pid <number>
     -l, --level <number>
     -f, --format <string>
+    -F, --filter <js expression>
 
