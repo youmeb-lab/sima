@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var path = require('path');
+var optimist = require('optimist');
+var Sima = require('../lib');
+var pkg = require('../package.json');
+
+// options
+var argv = optimist
+  .string(['f'])
+  .boolean(['r', 'h', 'V'])
+  .alias('f', 'format')
+  .alias('F', 'filter')
+  .alias('p', 'pid')
+  .alias('l', 'level')
+  .alias('h', 'help')
+  .alias('V', 'version')
+  .argv;
+
+var args = argv._;
+
+if (argv.filter && !Array.isArray(argv.filter)) {
+  argv.filter = [argv.filter];
+}
+
+// version
+if (argv.version) {
+  console.log(pkg.version);
+  return;
+}
+
+// help
+if (argv.help) {
+  fs.createReadStream(path.join(__dirname, 'help.txt'))
+    .pipe(process.stdout);
+  return;
+}
+
+var filename = args[0];
+var input = filename
+  ? fs.createReadStream(path.resolve(process.cwd(), filename))
+  : process.stdin;
+
+input = input.pipe(Sima.parse());
+input = input.pipe(Sima.level(argv.level))
+
+if (argv.pid !== undefined) {
+  input = input.pipe(Sima.filter(pidFilter(argv.pid)));
+}
+
+argv.filter.forEach(function (expr) {
+  input = input.pipe(Sima.filter(customFilter(expr)));
+});
+
+input.pipe(Sima.prettify(argv))
+  .pipe(process.stdout);
+
+function pidFilter(pid) {
+  return function (data) {
+    return data.pid == pid;
+  };
+}
+
+function customFilter(expr) {
+  return function (data) {
+    data = JSON.stringify(data);
+    var fn = 'var data = ' + data + ';return ' + expr;
+    return Function(fn)();
+  };
+}

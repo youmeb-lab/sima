@@ -1,0 +1,34 @@
+{
+  "name": "sima",
+  "version": "1.0.0",
+  "description": "A super simple JSON logging library",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Po-Ying Chen <poying.me@gmail.com> (陳柏穎)",
+  "license": "MIT",
+  "dependencies": {
+    "logrotate-stream": "^0.2.3",
+    "minstache": "^1.2.0",
+    "optimist": "^0.6.1"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "log",
+    "logging",
+    "stream",
+    "json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youmeb-lab/sima.git"
+  },
+  "bugs": {
+    "url": "https://github.com/youmeb-lab/sima/issues"
+  },
+  "homepage": "https://github.com/youmeb-lab/sima"
+}

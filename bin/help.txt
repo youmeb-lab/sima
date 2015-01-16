@@ -1,0 +1,14 @@
+
+  Usage:
+    
+    sima [options] <log file>
+    <stdout> | sima [options]
+
+  Options:
+    
+    -h, --help
+    -V, --version
+    -p, --pid <number>
+    -l, --level <number>
+    -f, --format <string>
+
