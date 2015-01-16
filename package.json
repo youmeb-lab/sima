@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A super simple JSON logging library",
   "main": "lib/index.js",
+  "bin": {
+    "sima": "bin/sima"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
