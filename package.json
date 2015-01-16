@@ -1,6 +1,6 @@
 {
   "name": "sima",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A super simple JSON logging library",
   "main": "lib/index.js",
   "bin": {
