@@ -24,16 +24,25 @@ $ npm i -g sima # command line tool
 
 ## How to write data to Sima?
 
+### Basic
+
+```javascript
+sima.info('type %s', 'something');
+sima.error('...');
+```
+
+### As a stream
+
 Sima is a `PassThrough` stream, so you can use `write` method directly or `pipe` other `Readable` stream to Sima, for example:
 
 ```javascript
-sima.write('message');
-sima.write('message', callback);
-sima.write(['%s', 'message']);
-sima.write(['%s', 'message'], callback);
+sima.write(['info', 'message']);
+sima.write(['info', 'message'], callback);
+sima.write(['info', '%s', 'message']);
+sima.write(['info', '%s', 'message'], callback);
 
 duplex.pipe(sima);
-duplex.write('message');
+duplex.write(['info', 'message']);
 ```
 
 ## How to output data to console/file?
@@ -44,7 +53,7 @@ __We can't `pipe` sima to `process.stdout`__, because sima outputs `Object`s not
 sima.pipe(process.stdout);
 ```
 
-Therefore, we need to convert Object to string:
+Therefore, we need to convert `Object` to `String`:
 
 ```javascript
 // json string
