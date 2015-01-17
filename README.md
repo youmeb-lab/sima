@@ -5,8 +5,9 @@ Sima is a super simple JSON logging library. if you are enjoying with `Stream`, 
 
 ```javascript
 var sima = Sima('myapp')
-  .useDefaultLevels()
-  .level('info')
+  .useDefaultLevels();
+  
+sima.level('info')
   .pipe(Sima.stringify())
   .pipe(process.stdout);
 
