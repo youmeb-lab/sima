@@ -16,6 +16,7 @@ var argv = optimist
   .alias('l', 'level')
   .alias('h', 'help')
   .alias('V', 'version')
+  .default('F', [])
   .argv;
 
 var args = argv._;
