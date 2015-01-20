@@ -72,6 +72,14 @@ sima
   .pipe(process.stdout);
 ```
 
+## Push records into Elasticsearch
+
+```bash
+$ npm i --save es-writable
+```
+
+[es-writable example](https://github.com/youmeb-lab/es-writable/blob/master/examples/sima.js)
+
 ## CLI Usage
 
 ### Pretty Print
