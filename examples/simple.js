@@ -13,7 +13,7 @@ sima.level('info')
   .pipe(Sima.prettify())
   .pipe(process.stdout);
 
-sima.trace('trace %j', { json: 'object' });
+sima.trace('trace', { json: 'object' });
 sima.debug('debug %s', 'string');
 sima.info('info');
 sima.error('error');
